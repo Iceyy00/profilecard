@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Card</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    article[data-testid="test-profile-card"] {
+      max-width: 500px;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+    @media (min-width: 600px) {
+      article[data-testid="test-profile-card"] {
+        flex-direction: row;
+        align-items: flex-start;
+        max-width: 700px;
+      }
+      .profile-main {
+        flex: 1;
+      }
+    }
+    figure {
+      margin: 0;
+      min-width: 120px;
+      max-width: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    img[data-testid="test-user-avatar"] {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #eee;
+      margin-bottom: 0.5rem;
+    }
+    nav[data-testid="test-user-social-links"] ul {
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+      list-style: none;
+    }
+    nav[data-testid="test-user-social-links"] a {
+      text-decoration: none;
+      color: #0077cc;
+      outline: none;
+      border-radius: 4px;
+      padding: 2px 6px;
+      transition: background 0.2s;
+    }
+    nav[data-testid="test-user-social-links"] a:focus {
+      background: #e0f0ff;
+      box-shadow: 0 0 0 2px #0077cc;
+    }
+    section {
+      margin-top: 1rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    @media (max-width: 599px) {
+      article[data-testid="test-profile-card"] {
+        flex-direction: column;
+        max-width: 95vw;
+      }
+      figure {
+        align-self: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article data-testid="test-profile-card">
+    <figure>
+        <img src="images/reduced_quality_image.jpg" alt="User Avatar" data-testid="test-user-avatar" />
+      
+
+    </figure>
+    <div class="profile-main">
+      <header>
+        <h2 data-testid="test-user-name" aria-label="User Name">Sylvester Omekara</h2>
+      </header>
+      <p data-testid="test-user-bio">
+        Frontend developer passionate about building accessible web experiences. Loves music, photography, and learning new tech.
+      </p>
+      <div>
+        <strong>Current time (ms):</strong>
+        <span data-testid="test-user-time" id="current-time"></span>
+      </div>
+      <nav data-testid="test-user-social-links" aria-label="Social Links">
+        <ul>
+          <li>
+            <a 
+              href="https://twitter.com/johndoe" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              data-testid="test-user-social-twitter"
+            >Twitter</a>
+          </li>
+          <li>
+            <a 
+              href="https://github.com/johndoe" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              data-testid="test-user-social-github"
+            >GitHub</a>
+          </li>
+          <li>
+            <a 
+              href="https://linkedin.com/in/johndoe" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              data-testid="test-user-social-linkedin"
+            >LinkedIn</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h3>Hobbies</h3>
+        <ul data-testid="test-user-hobbies">
+          <li>Singing</li>
+          <li>Photography</li>
+          <li>Reading</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Dislikes</h3>
+        <ul data-testid="test-user-dislikes">
+          <li>Noise</li>
+          <li>Being Idle</li>
+          <li>Lack of information</li>
+        </ul>
+      </section>
+    </div>
+  </article>
+  <script>
+  function updateTime() {
+    document.getElementById('current-time').textContent = Date.now();
+  }
+  updateTime();
+  setInterval(updateTime, 100);
+</script>
+</body>
+</html>
